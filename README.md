@@ -1,5 +1,7 @@
 # Adam PRISM
 
+[![Test and Lint](https://github.com/kalverra/adam-prism/actions/workflows/test.yaml/badge.svg)](https://github.com/kalverra/adam-prism/actions/workflows/test.yaml)
+
 Inspired by the [NSA's PRISM program](https://en.wikipedia.org/wiki/PRISM), I like to track my personal data over time to look for useful trends in managing my mental and physical health. I have a lot of data, but it's disparately managed by services that don't talk to each other well, or at least not in the way I want them to.
 
 ## Systems I'm Using
