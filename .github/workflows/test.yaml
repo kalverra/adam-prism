@@ -1,0 +1,47 @@
+name: Test and Lint
+on:
+    push:
+        branches:
+        - main
+    pull_request:
+        branches:
+        - main
+
+jobs:
+    test:
+      name: Test
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - name: Set up Go
+          uses: actions/setup-go@v4
+        - name: Set up gotestfmt
+          uses: haveyoudebuggedit/gotestfmt-action@v2
+          with:
+            # Optional: pass GITHUB_TOKEN to avoid rate limiting.
+            token: ${{ secrets.GITHUB_TOKEN }}
+        - name: Run tests
+          run: |
+            set -euo pipefail
+            go test -v ./... 2>&1 | tee /tmp/gotest.log | gotestfmt
+        - name: Upload test log
+          uses: actions/upload-artifact@v3
+          if: always()
+          with:
+            name: test-log
+            path: /tmp/gotest.log
+            if-no-files-found: error
+
+    lint:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: Set up Go
+              uses: actions/setup-go@v4
+            - name: golangci-lint
+              uses: golangci/golangci-lint-action@v4
+              with:
+                version: latest

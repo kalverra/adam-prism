@@ -1,2 +1,4 @@
-notion.secret
+*.secret
 .vscode/
+.env
+cover.out
