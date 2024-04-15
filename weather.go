@@ -33,15 +33,14 @@ func GetWeather(client *resty.Client, latitude float64, longitude float64, start
 	}
 	resp, err := client.R().
 		SetQueryParams(queryParams).
-		SetResult(&result).
+		SetHeader("Accept", "application/json").
+		SetResult(result).
 		Get("/v1/archive")
-	// DEBUG:
-	fmt.Println("DEBUG:")
-	fmt.Println(resp.String())
 	if err != nil || resp.IsError() {
 		return nil, fmt.Errorf("error getting weather data with status code %d: %w", resp.StatusCode(), err)
 	}
 
+	log.Debug().Str("Data", resp.String()).Interface("Marshalled", result).Msg("Got Weather Data")
 	return result, nil
 }
 

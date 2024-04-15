@@ -19,3 +19,10 @@ repos:
     rev: v1.0.0-rc.1
     hooks:
     - id: go-mod-tidy
+  - repo: local
+    hooks:
+    - id: test
+      name: Test
+      entry: make test
+      language: system
+      stages: [push]
