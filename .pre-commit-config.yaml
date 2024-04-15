@@ -15,7 +15,6 @@ repos:
     hooks:
     - id: golangci-lint
       args: ['--config', '.golangci.yml']
-      stages: [commit]
   - repo: https://github.com/TekWizely/pre-commit-golang
     rev: v1.0.0-rc.1
     hooks:
