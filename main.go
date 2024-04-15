@@ -54,10 +54,9 @@ func main() {
 	log.Info().Msg("Sup")
 	mainClient := resty.New()
 
-	weather, err := GetWeather(mainClient, config.Latitude, config.Longitude, time.Now().AddDate(0, 0, -3), time.Now().AddDate(0, 0, -3))
+	_, err := GetWeather(mainClient, config.Latitude, config.Longitude, time.Now().AddDate(0, 0, -3), time.Now().AddDate(0, 0, -3))
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to get weather data")
 		return
 	}
-	log.Info().Interface("Weather", weather).Msg("Got weather data")
 }
