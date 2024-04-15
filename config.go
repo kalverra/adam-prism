@@ -6,6 +6,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
+// Config holds the configuration
 type Config struct {
 	LogLevel  string  `env:"LOG_LEVEL" envDefault:"debug"`
 	Latitude  float64 `env:"LATITUDE"`
@@ -13,6 +14,7 @@ type Config struct {
 	NotionKey string  `env:"NOTION_KEY"`
 }
 
+// ReadConfig reads the configuration from the environment
 func ReadConfig() (*Config, error) {
 	err := godotenv.Load()
 	if err != nil {
