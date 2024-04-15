@@ -22,7 +22,9 @@ jobs:
             # Optional: pass GITHUB_TOKEN to avoid rate limiting.
             token: ${{ secrets.GITHUB_TOKEN }}
         - name: Run tests
-          run: make test
+          run: |
+            set -euo pipefail
+            go test -coverprofile cover.out -json -v ./... 2>&1 | tee /tmp/gotest.log | gotestfmt
         - name: Upload coverage reports to Codecov
           uses: codecov/codecov-action@v4
           with:
