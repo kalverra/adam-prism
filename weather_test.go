@@ -32,3 +32,17 @@ func TestGetWeather(t *testing.T) {
 	require.NotEmpty(t, data.Daily.ApparentTemperatureMax, "ApparentTemperatureMax should not be empty %+v", data)
 	require.Equal(t, 27.3, data.Daily.ApparentTemperatureMax[0])
 }
+
+func TestGetWeatherError(t *testing.T) {
+	t.Parallel()
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.WriteHeader(500)
+	}))
+	t.Cleanup(server.Close)
+
+	client := resty.New()
+	client.SetBaseURL(server.URL)
+	data, err := GetWeather(client, 0, 0, time.Now(), time.Now())
+	require.Error(t, err)
+	require.Nil(t, data)
+}
