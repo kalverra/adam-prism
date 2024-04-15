@@ -4,3 +4,6 @@ test:
 
 lint:
 	golangci-lint --color=always run ./... --fix -v
+
+install:
+	pre-commit install
