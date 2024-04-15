@@ -25,4 +25,4 @@ repos:
       name: Test
       entry: make test
       language: system
-      stages: [push]
+      stages: [pre-push]
