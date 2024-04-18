@@ -2,6 +2,7 @@
 
 [![Test and Lint](https://github.com/kalverra/adam-prism/actions/workflows/test.yaml/badge.svg)](https://github.com/kalverra/adam-prism/actions/workflows/test.yaml)
 [![codecov](https://codecov.io/gh/kalverra/adam-prism/graph/badge.svg?token=KUQGY1O7RN)](https://codecov.io/gh/kalverra/adam-prism)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kalverra/adam-prism)](https://goreportcard.com/report/github.com/kalverra/adam-prism)
 
 Inspired by the [NSA's PRISM program](https://en.wikipedia.org/wiki/PRISM), I like to track my personal data over time to look for useful trends in managing my mental and physical health. I have a lot of data, but it's disparately managed by services that don't talk to each other well, or at least not in the way I want them to.
 

@@ -36,9 +36,13 @@ func main() {
 	log.Info().Msg("Sup")
 	mainClient := resty.New()
 
-	_, err := GetWeather(mainClient, config.Latitude, config.Longitude, time.Now().AddDate(0, 0, -3), time.Now().AddDate(0, 0, -3))
+	weatherData, err := GetWeather(mainClient, config.Latitude, config.Longitude, time.Now().AddDate(0, 0, -3), time.Now().AddDate(0, 0, -1))
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to get weather data")
 		return
+	}
+	err = AddWeatherData(mainClient, weatherData)
+	if err != nil {
+		log.Error().Err(err).Msg("Failed to add weather data to notion")
 	}
 }

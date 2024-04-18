@@ -12,6 +12,7 @@ type Config struct {
 	Latitude  float64 `env:"LATITUDE"`
 	Longitude float64 `env:"LONGITUDE"`
 	NotionKey string  `env:"NOTION_KEY"`
+	WeatherDB string  `env:"WEATHER_DB"`
 }
 
 // ReadConfig reads the configuration from the environment
